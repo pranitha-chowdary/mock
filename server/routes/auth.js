@@ -8,6 +8,7 @@ const generateToken = (id) =>
   jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: "1d" });
 
 router.post("/register", async (req, res) => {
+  console.log("Registering user:", req.body);
   const { name, email, password } = req.body;
   try {
     const user = await User.create({ name, email, password });
